@@ -3,7 +3,7 @@ import CardComponent from "./CardComponent.vue";
 </script>
 
 <template>
-  <div class="max-w-[276px]">
+  <div class="w-1/4">
     <CardComponent class="flex-col gap-2">
       <!-- label and option -->
       <div class="flex justify-between item-center w-full">
