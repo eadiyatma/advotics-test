@@ -1,5 +1,8 @@
 <script setup>
 import CardComponent from "./CardComponent.vue";
+import IconDotsVertical from "./icons/IconDotsVertical.vue";
+import ButtonComponents from "./ButtonComponents.vue";
+import IconCart from "./icons/IconCart.vue";
 </script>
 
 <template>
@@ -8,7 +11,9 @@ import CardComponent from "./CardComponent.vue";
       <!-- label and option -->
       <div class="flex justify-between item-center w-full">
         <div class="capitalize">sales turnover</div>
-        <div>m</div>
+        <ButtonComponents>
+          <IconDotsVertical />
+        </ButtonComponents>
       </div>
       <div class="w-full flex items-center gap-4">
         <!-- info -->
@@ -19,7 +24,7 @@ import CardComponent from "./CardComponent.vue";
           </div>
         </div>
         <!-- icon -->
-        <div>s</div>
+        <IconCart class="w-12" />
       </div>
     </CardComponent>
   </div>

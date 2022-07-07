@@ -16,6 +16,11 @@ const dateNow = moment(date).format("LL");
 const fromDate = ref(moment(date).format("LL"));
 const toDate = ref(moment(date.setDate(date.getDate() - 7)).format("LL"));
 
+const rangeDate = ref({
+  start: fromDate,
+  end: toDate,
+});
+
 const showCalendar = ref(false);
 
 const toggleCalendar = () => {
@@ -35,7 +40,8 @@ const toggleCalendar = () => {
       >
         <IconCalendar />
         <div>Period</div>
-        {{ fromDate }} - {{ toDate }}
+        {{ moment(rangeDate.start).format("LL") }} -
+        {{ moment(rangeDate.end).format("LL") }}
         <IconChevronDown />
       </CardComponent>
       <!-- floating calendar -->
@@ -43,12 +49,15 @@ const toggleCalendar = () => {
         <CardComponent class="flex-col gap-2">
           <div class="flex justify-between items-center w-full">
             <h2 class="font-semibold">Period</h2>
-            <button @click="toggleCalendar" class="font-semibold">
-              <IconChevronUp />
-            </button>
+            <button @click="toggleCalendar" class="font-semibold">X</button>
           </div>
           <div class="flex">
-            <v-date-picker trim-weeks is-range :columns="2"></v-date-picker>
+            <v-date-picker
+              v-model="rangeDate"
+              trim-weeks
+              is-range
+              :columns="2"
+            ></v-date-picker>
           </div>
         </CardComponent>
       </div>
