@@ -8,11 +8,13 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
+    "apexcharts": "^3.35.3",
     "moment": "^2.29.4",
     "pinia": "^2.0.14",
     "v-calendar": "^3.0.0-alpha.8",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.16"
+    "vue-router": "^4.0.16",
+    "vue3-apexcharts": "^1.4.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",

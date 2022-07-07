@@ -3,6 +3,7 @@ import CardComponent from "./CardComponent.vue";
 import IconDotsVertical from "./icons/IconDotsVertical.vue";
 import ButtonComponents from "./ButtonComponents.vue";
 import IconCart from "./icons/IconCart.vue";
+import IconArrowDown from "./icons/IconArrowDown.vue";
 </script>
 
 <template>
@@ -19,8 +20,12 @@ import IconCart from "./icons/IconCart.vue";
         <!-- info -->
         <div class="flex flex-col">
           <div class="text-[25px] font-bold">Rp. 3,600,000</div>
-          <div class="text-[10px]">
-            <span class="text-red-500">13.8%</span> last period in products sold
+          <div class="text-[10px] flex gap-1 items-center">
+            <div class="w-2 fill-red-500">
+              <IconArrowDown />
+            </div>
+            <div class="text-red-500 font-medium flex gap-2">13.8%</div>
+            last period in products sold
           </div>
         </div>
         <!-- icon -->

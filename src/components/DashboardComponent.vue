@@ -6,6 +6,8 @@ import DashboardTitle from "./DashboardTitle.vue";
 import MarketInsightComponent from "./MarketInsightComponent.vue";
 import InfoComponent from "./InfoComponent.vue";
 import CardComponent from "./CardComponent.vue";
+import CardTitle from "./CardTitle.vue";
+import ChartComponent from "./ChartComponent.vue";
 </script>
 
 <template>
@@ -25,13 +27,27 @@ import CardComponent from "./CardComponent.vue";
       <div class="flex gap-4">
         <!-- chart -->
         <div class="w-1/2">
-          <CardComponent>ini card chart</CardComponent>
+          <CardComponent class="flex-col gap-2">
+            <CardTitle label="average purchase value">
+              <CardComponent class="text-xs font-medium text-title-card"
+                >Last 6 months</CardComponent
+              >
+            </CardTitle>
+            <!-- card body -->
+            <div class="w-full items-center justify-center">
+              <ChartComponent />
+            </div>
+          </CardComponent>
         </div>
         <div class="w-1/4">
-          <CardComponent>ini card chart</CardComponent>
+          <CardComponent>
+            <CardTitle label="Best selling sku" />
+          </CardComponent>
         </div>
         <div class="w-1/4">
-          <CardComponent>ini card chart</CardComponent>
+          <CardComponent>
+            <CardTitle label="top competitor sku" />
+          </CardComponent>
         </div>
       </div>
     </LayoutComponent>

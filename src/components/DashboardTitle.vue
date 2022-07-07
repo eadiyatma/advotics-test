@@ -6,20 +6,12 @@ import { ref } from "vue";
 import IconCalendar from "./icons/IconCalendar.vue";
 import IconChevronDown from "./icons/IconChevronDown.vue";
 import IconChevronUp from "./icons/IconChevronUp.vue";
+import { useDateStore } from "../stores/date";
+
+const dateStore = useDateStore();
 
 const date = new Date();
 moment.locales("id");
-console.log(moment(date).format("LL"));
-
-const dateNow = moment(date).format("LL");
-
-const fromDate = ref(moment(date).format("LL"));
-const toDate = ref(moment(date.setDate(date.getDate() - 7)).format("LL"));
-
-const rangeDate = ref({
-  start: fromDate,
-  end: toDate,
-});
 
 const showCalendar = ref(false);
 
@@ -40,8 +32,9 @@ const toggleCalendar = () => {
       >
         <IconCalendar />
         <div>Period</div>
-        {{ moment(rangeDate.start).format("LL") }} -
-        {{ moment(rangeDate.end).format("LL") }}
+        {{ moment(dateStore.date.start).format("LL") }}
+        -
+        {{ moment(dateStore.date.end).format("LL") }}
         <IconChevronDown />
       </CardComponent>
       <!-- floating calendar -->
@@ -53,10 +46,12 @@ const toggleCalendar = () => {
           </div>
           <div class="flex">
             <v-date-picker
-              v-model="rangeDate"
+              v-model="dateStore.date"
               trim-weeks
               is-range
               :columns="2"
+              :attributes="dateStore.attrs"
+              color="green"
             ></v-date-picker>
           </div>
         </CardComponent>
