@@ -5,12 +5,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#8362F2",
-        secondary: "#525252",
-        stars: "#FFC107",
-        error: '#F5587B',
-        background: 'rgba(245, 245, 245, 0.75)',
+        primary: "#37B04C",
+        background: '#F7F7F7',
+        title: '#707070C4'
       },
+      boxShadow: {
+        'navbar': '0px 3px 6px #00000029',
+        'card': '0px 2px 3px #00000029'
+      },
+      fontSize: {
+        'title': '40px',
+        'subtitle': '20px',
+      }
     },
   },
   plugins: [],
