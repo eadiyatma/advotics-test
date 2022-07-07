@@ -7,7 +7,8 @@ module.exports = {
       colors: {
         primary: "#37B04C",
         background: '#F7F7F7',
-        title: '#707070C4'
+        title: '#707070C4',
+        calendar: '#6A6A6A'
       },
       boxShadow: {
         'navbar': '0px 3px 6px #00000029',

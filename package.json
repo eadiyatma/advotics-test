@@ -8,6 +8,7 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
+    "moment": "^2.29.4",
     "pinia": "^2.0.14",
     "v-calendar": "^3.0.0-alpha.8",
     "vue": "^3.2.37",
