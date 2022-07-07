@@ -3,6 +3,9 @@ import CardComponent from "./CardComponent.vue";
 import moment from "moment";
 import id from "moment/dist/locale/id";
 import { ref } from "vue";
+import IconCalendar from "./icons/IconCalendar.vue";
+import IconChevronDown from "./icons/IconChevronDown.vue";
+import IconChevronUp from "./icons/IconChevronUp.vue";
 
 const date = new Date();
 moment.locales("id");
@@ -30,15 +33,19 @@ const toggleCalendar = () => {
         class="gap-2 text-calendar hover:cursor-pointer hover:bg-gray-50 transition-colors duration-150 ease-out"
         @click="toggleCalendar"
       >
+        <IconCalendar />
         <div>Period</div>
         {{ fromDate }} - {{ toDate }}
+        <IconChevronDown />
       </CardComponent>
       <!-- floating calendar -->
       <div v-if="showCalendar" class="absolute top-0 right-0">
         <CardComponent class="flex-col gap-2">
           <div class="flex justify-between items-center w-full">
             <h2 class="font-semibold">Period</h2>
-            <button @click="toggleCalendar" class="font-semibold">X</button>
+            <button @click="toggleCalendar" class="font-semibold">
+              <IconChevronUp />
+            </button>
           </div>
           <div class="flex">
             <v-date-picker trim-weeks is-range :columns="2"></v-date-picker>
