@@ -30,13 +30,15 @@ const todayDate = () => {
     start: new Date(),
     end: new Date(),
   };
+  dateStore.newDate(dates.value.start, dates.value.end);
 };
 const yesterdayDate = () => {
   isActiveButton.value = 2;
   dates.value = {
-    start: new Date(),
+    start: new Date().setDate(new Date().getDate() - 1),
     end: new Date().setDate(new Date().getDate() - 1),
   };
+  dateStore.newDate(dates.value.start, dates.value.end);
 };
 const lastWeekDate = () => {
   isActiveButton.value = 3;
@@ -44,6 +46,7 @@ const lastWeekDate = () => {
     start: new Date(),
     end: new Date().setDate(new Date().getDate() - 7),
   };
+  dateStore.newDate(dates.value.start, dates.value.end);
 };
 const lastMonthDate = () => {
   isActiveButton.value = 4;
@@ -51,32 +54,42 @@ const lastMonthDate = () => {
     start: new Date(),
     end: new Date().setDate(new Date().getDate() - 30),
   };
+  dateStore.newDate(dates.value.start, dates.value.end);
 };
 const thisMonthDate = () => {
   isActiveButton.value = 5;
   const date = new Date();
   dates.value = {
-    start: new Date(date.getFullYear(), date.getMonth(), 1),
-    end: new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      dateStore.maxDate.getDate()
-    ),
+    start: new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+    end: new Date(date.getFullYear(), date.getMonth(), 1),
   };
+  dateStore.newDate(dates.value.start, dates.value.end);
 };
 const customDate = () => {
   isActiveButton.value = 6;
+  console.log(dateStore.date.start);
+  console.log(dateStore.date.end);
+  var endDate = new Date(dateStore.date.end);
+
+  if (dateStore.date.start.getDate() == endDate.toUTCString()) {
+    dates.value = {
+      start: dateStore.date.start,
+      end: new Date().setDate(dateStore.date.end.getDate() - 1),
+    };
+    dateStore.newDate(dates.value.start, dates.value.end);
+    return;
+  }
   dates.value = {
-    start: new Date(),
-    end: new Date(),
+    start: dateStore.date.end,
+    end: dateStore.date.start,
   };
-  dateStore.newDate(new Date(), new Date());
+  dateStore.newDate(dateStore.date.start, dateStore.date.end);
 };
 
 const applyDate = () => {
   switch (isActiveButton.value) {
     case 0:
-      todayDate();
+      lastWeekDate();
       break;
     case 1:
       todayDate();
@@ -93,12 +106,15 @@ const applyDate = () => {
     case 5:
       thisMonthDate();
       break;
+    case 6:
+      customDate();
+      break;
   }
-  dateStore.newDate(dates.value.start, dates.value.end);
+  // dateStore.newDate(dates.value.start, dates.value.end);
+  dateStore.startDate = dateStore.date.start;
+  dateStore.endDate = dateStore.date.end;
 };
 const isActiveButton = ref(0);
-
-console.log(dateStore.minDate);
 </script>
 
 <template>
@@ -113,9 +129,9 @@ console.log(dateStore.minDate);
       >
         <IconCalendar />
         <div>Period</div>
-        {{ moment(dateStore.date.start).format("LL") }}
+        {{ moment(dateStore.endDate).format("LL") }}
         -
-        {{ moment(dateStore.date.end).format("LL") }}
+        {{ moment(dateStore.startDate).format("LL") }}
         <IconChevronDown />
       </CardComponent>
       <!-- floating calendar -->
@@ -162,7 +178,10 @@ console.log(dateStore.minDate);
               <!-- button apply -->
               <button
                 class="bg-primary text-white font-semibold py-2 px-4 rounded w-36"
-                @click="applyDate(), toggleCalendar()"
+                @click="
+                  applyDate();
+                  toggleCalendar();
+                "
               >
                 Apply
               </button>
@@ -171,14 +190,12 @@ console.log(dateStore.minDate);
             <!-- calendar section -->
             <div class="pl-4 border-l">
               <v-date-picker
-                v-model="dates"
-                trim-weeks
+                v-model="dateStore.date"
                 is-range
                 :columns="2"
                 :attributes="dateStore.attrs"
                 :min-date="dateStore.minDate"
                 :max-date="dateStore.maxDate"
-                :update-on-input="true"
                 color="green"
               ></v-date-picker>
             </div>
