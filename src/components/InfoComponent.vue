@@ -24,7 +24,7 @@ import IconArrowDown from "./icons/IconArrowDown.vue";
             <div class="w-2 fill-red-500">
               <IconArrowDown />
             </div>
-            <div class="text-red-500 font-medium flex gap-2">13.8%</div>
+            <div class="text-red-500 font-bold flex gap-2">13.8%</div>
             last period in products sold
           </div>
         </div>
