@@ -7,7 +7,7 @@ const logo = new URL(`../assets/logo.jpg`, import.meta.url).href;
 
 <template>
   <nav
-    class="fixed top-0 h-16 w-full bg-white shadow-navbar px-8 flex justify-between items-center"
+    class="fixed top-0 h-16 w-full bg-white shadow-navbar px-8 flex justify-between items-center z-[9]"
   >
     <!-- logo -->
     <div>

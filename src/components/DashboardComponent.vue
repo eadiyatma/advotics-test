@@ -8,6 +8,10 @@ import InfoComponent from "./InfoComponent.vue";
 import CardComponent from "./CardComponent.vue";
 import CardTitle from "./CardTitle.vue";
 import ChartComponent from "./ChartComponent.vue";
+import CardSelling from "./CardSelling.vue";
+import { useMainStore } from "../stores/mainStore";
+
+const mainStore = useMainStore();
 </script>
 
 <template>
@@ -27,7 +31,7 @@ import ChartComponent from "./ChartComponent.vue";
       <div class="flex gap-4">
         <!-- chart -->
         <div class="w-1/2">
-          <CardComponent class="flex-col gap-2">
+          <CardComponent class="flex-col flex-1 gap-2 h-full">
             <CardTitle label="average purchase value">
               <CardComponent class="text-xs font-medium text-title-card"
                 >Last 6 months</CardComponent
@@ -40,13 +44,23 @@ import ChartComponent from "./ChartComponent.vue";
           </CardComponent>
         </div>
         <div class="w-1/4">
-          <CardComponent>
-            <CardTitle label="Best selling sku" />
+          <CardComponent class="flex-col gap-2 h-full">
+            <CardTitle label="Best selling sku" class="mb-4" />
+            <CardSelling
+              v-for="(item, index) in mainStore.bestSelling"
+              :key="index"
+              :is-first="index == 0"
+            />
           </CardComponent>
         </div>
         <div class="w-1/4">
-          <CardComponent>
-            <CardTitle label="top competitor sku" />
+          <CardComponent class="flex-col gap-2 h-full">
+            <CardTitle label="top competitor sku" class="mb-4" />
+            <CardSelling
+              v-for="(item, index) in mainStore.competitorSelling"
+              :key="index"
+              :is-first="index == 0"
+            />
           </CardComponent>
         </div>
       </div>

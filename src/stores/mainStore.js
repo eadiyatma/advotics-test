@@ -1,5 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 
+
 export const useMainStore = defineStore('main', {
     state: () => ({
         counter: 0,
@@ -412,19 +413,19 @@ export const useMainStore = defineStore('main', {
             },
         ],
         series: [{
-            name: "PRODUCT A",
+            name: "Nett",
             data: [44, 55, 41, 67, 22, 43],
         },
         {
-            name: "PRODUCT B",
+            name: "Gross",
             data: [13, 23, 20, 8, 13, 27],
         },
         {
-            name: "PRODUCT C",
+            name: "Average Purchase Value",
             data: [11, 17, 15, 15, 21, 14],
         },
         {
-            name: "PRODUCT D",
+            name: "Unit per Transaction",
             data: [21, 7, 25, 13, 22, 8],
         },],
         chartOptions: {
@@ -477,6 +478,60 @@ export const useMainStore = defineStore('main', {
             },
             colors: ["#37B04C", "#289E45", "#7AE28C", "#707070"],
         },
+        bestSelling: [
+            {
+                name: 'Danone Milk',
+                price: 1000000,
+                sold: 100,
+            },
+            {
+                name: 'Danone Milk',
+                price: 1000000,
+                sold: 130,
+            },
+            {
+                name: 'Danone Milk',
+                price: 1000000,
+                sold: 120,
+            },
+            {
+                name: 'Danone Milk',
+                price: 1000000,
+                sold: 180,
+            },
+            {
+                name: 'Danone Milk',
+                price: 1000000,
+                sold: 190,
+            },
+        ],
+        competitorSelling: [
+            {
+                name: 'Silk Coconut Milk',
+                price: 1000000,
+                sold: 100,
+            },
+            {
+                name: 'Silk Coconut Milk',
+                price: 1000000,
+                sold: 130,
+            },
+            {
+                name: 'Silk Coconut Milk',
+                price: 1000000,
+                sold: 120,
+            },
+            {
+                name: 'Silk Coconut Milk',
+                price: 1000000,
+                sold: 180,
+            },
+            {
+                name: 'Silk Coconut Milk',
+                price: 1000000,
+                sold: 190,
+            },
+        ],
     }
     ),
     getters: {
@@ -493,3 +548,6 @@ export const useMainStore = defineStore('main', {
 })
 
 // make sure to pass the right store definition, `useAuth` in this case.
+if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useMainStore, import.meta.hot))
+}
