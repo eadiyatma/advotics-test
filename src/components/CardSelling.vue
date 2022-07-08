@@ -16,6 +16,10 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  image: {
+    type: String,
+    default: "",
+  },
 });
 </script>
 
@@ -23,7 +27,7 @@ const props = defineProps({
   <div class="flex w-full rounded border">
     <!-- image -->
     <div :class="isFirst ? 'w-32' : 'w-28'">
-      <img src="https://picsum.photos/id/1/200/200" alt="" />
+      <img :src="image ? image : 'https://picsum.photos/id/1/200/200'" alt="" />
     </div>
     <!-- description -->
     <div

@@ -5,8 +5,6 @@ const iconDashboard = new URL(`../assets/iconDashboard.svg`, import.meta.url)
   .href;
 
 const router = useRouter();
-
-console.log(router.currentRoute);
 </script>
 
 <template>

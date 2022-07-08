@@ -1,4 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
+const danoneMilk = new URL(`../assets/danoneMilk.png`, import.meta.url).href;
+const danoneNature = new URL(`../assets/danoneNature.jpg`, import.meta.url).href;
+const silk = new URL(`../assets/silk.jpg`, import.meta.url).href;
 
 
 export const useMainStore = defineStore('main', {
@@ -483,26 +486,31 @@ export const useMainStore = defineStore('main', {
                 name: 'Danone Milk',
                 price: 1000000,
                 sold: 100,
+                image: danoneMilk,
             },
             {
                 name: 'Danone Milk',
                 price: 1000000,
                 sold: 130,
+                image: danoneMilk,
             },
             {
                 name: 'Danone Milk',
                 price: 1000000,
                 sold: 120,
+                image: danoneNature,
             },
             {
                 name: 'Danone Milk',
                 price: 1000000,
                 sold: 180,
+                image: danoneNature,
             },
             {
                 name: 'Danone Milk',
                 price: 1000000,
                 sold: 190,
+                image: danoneNature,
             },
         ],
         competitorSelling: [
@@ -510,26 +518,31 @@ export const useMainStore = defineStore('main', {
                 name: 'Silk Coconut Milk',
                 price: 1000000,
                 sold: 100,
+                image: silk,
             },
             {
                 name: 'Silk Coconut Milk',
                 price: 1000000,
                 sold: 130,
+                image: silk,
             },
             {
                 name: 'Silk Coconut Milk',
                 price: 1000000,
                 sold: 120,
+                image: silk,
             },
             {
                 name: 'Silk Coconut Milk',
                 price: 1000000,
                 sold: 180,
+                image: silk,
             },
             {
                 name: 'Silk Coconut Milk',
                 price: 1000000,
                 sold: 190,
+                image: silk,
             },
         ],
     }

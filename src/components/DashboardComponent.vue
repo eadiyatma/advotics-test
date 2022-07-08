@@ -47,9 +47,12 @@ const mainStore = useMainStore();
           <CardComponent class="flex-col gap-2 h-full">
             <CardTitle label="Best selling sku" class="mb-4" />
             <CardSelling
-              v-for="(item, index) in mainStore.bestSelling"
+              v-for="(item, index) in mainStore.bestSelling.sort(
+                (a, b) => b.sold - a.sold
+              )"
               :key="index"
               :is-first="index == 0"
+              :image="item.image"
             />
           </CardComponent>
         </div>
@@ -57,9 +60,12 @@ const mainStore = useMainStore();
           <CardComponent class="flex-col gap-2 h-full">
             <CardTitle label="top competitor sku" class="mb-4" />
             <CardSelling
-              v-for="(item, index) in mainStore.competitorSelling"
+              v-for="(item, index) in mainStore.competitorSelling.sort(
+                (a, b) => b.sold - a.sold
+              )"
               :key="index"
               :is-first="index == 0"
+              :image="item.image"
             />
           </CardComponent>
         </div>

@@ -18,7 +18,7 @@ const props = defineProps({
   <div
     class="flex justify-between item-center w-full uppercase text-title-card"
   >
-    <div class="flex items-center">
+    <div class="flex items-center font-medium text-title-card">
       {{ props.label }}
     </div>
     <div class="flex items-center justify-center gap-2">
