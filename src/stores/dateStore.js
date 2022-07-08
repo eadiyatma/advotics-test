@@ -2,13 +2,9 @@ import { defineStore } from 'pinia'
 
 export const useDateStore = defineStore('date', {
     state: () => ({
-        /**
-         * ini mulai dari tanggal sekarang sampai kebelakang
-         * jadi start tanggal sekarang end tanggal berakhir
-         */
         date: {
-            start: new Date(),
-            end: new Date().setDate(new Date().getDate() - 7)
+            start: new Date().setDate(new Date().getDate() - 7),
+            end: new Date()
         },
         maxDate: new Date().setDate(new Date().getDate()),
         minDate: new Date().setDate(new Date().getDate() - 180),

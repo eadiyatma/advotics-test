@@ -43,16 +43,16 @@ const yesterdayDate = () => {
 const lastWeekDate = () => {
   isActiveButton.value = 3;
   dates.value = {
-    start: new Date(),
-    end: new Date().setDate(new Date().getDate() - 7),
+    start: new Date().setDate(new Date().getDate() - 7),
+    end: new Date(),
   };
   dateStore.newDate(dates.value.start, dates.value.end);
 };
 const lastMonthDate = () => {
   isActiveButton.value = 4;
   dates.value = {
-    start: new Date(),
-    end: new Date().setDate(new Date().getDate() - 30),
+    start: new Date().setDate(new Date().getDate() - 30),
+    end: new Date(),
   };
   dateStore.newDate(dates.value.start, dates.value.end);
 };
@@ -60,8 +60,8 @@ const thisMonthDate = () => {
   isActiveButton.value = 5;
   const date = new Date();
   dates.value = {
-    start: new Date(date.getFullYear(), date.getMonth(), date.getDate()),
-    end: new Date(date.getFullYear(), date.getMonth(), 1),
+    start: new Date(date.getFullYear(), date.getMonth(), 1),
+    end: new Date(date.getFullYear(), date.getMonth(), date.getDate()),
   };
   dateStore.newDate(dates.value.start, dates.value.end);
 };
@@ -80,8 +80,8 @@ const customDate = () => {
     return;
   }
   dates.value = {
-    start: dateStore.date.end,
-    end: dateStore.date.start,
+    start: dateStore.date.start,
+    end: dateStore.date.end,
   };
   dateStore.newDate(dateStore.date.start, dateStore.date.end);
 };
@@ -111,8 +111,8 @@ const applyDate = () => {
       break;
   }
   // dateStore.newDate(dates.value.start, dates.value.end);
-  dateStore.startDate = dateStore.date.start;
-  dateStore.endDate = dateStore.date.end;
+  dateStore.startDate = dates.value.start;
+  dateStore.endDate = dates.value.end;
 };
 const isActiveButton = ref(0);
 </script>
@@ -129,9 +129,9 @@ const isActiveButton = ref(0);
       >
         <IconCalendar />
         <div>Period</div>
-        {{ moment(dateStore.endDate).format("LL") }}
-        -
         {{ moment(dateStore.startDate).format("LL") }}
+        -
+        {{ moment(dateStore.endDate).format("LL") }}
         <IconChevronDown />
       </CardComponent>
       <!-- floating calendar -->
