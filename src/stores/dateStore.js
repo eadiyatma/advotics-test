@@ -6,7 +6,7 @@ export const useDateStore = defineStore('date', {
             start: new Date(),
             end: new Date().setDate(new Date().getDate() - 7)
         },
-        maxDate: new Date(),
+        maxDate: new Date().setDate(new Date().getDate() - 1),
         minDate: new Date().setDate(new Date().getDate() - 180),
     }),
     actions: {

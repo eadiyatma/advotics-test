@@ -75,6 +75,9 @@ const customDate = () => {
 
 const applyDate = () => {
   switch (isActiveButton.value) {
+    case 0:
+      todayDate();
+      break;
     case 1:
       todayDate();
       break;
@@ -159,7 +162,7 @@ console.log(dateStore.minDate);
               <!-- button apply -->
               <button
                 class="bg-primary text-white font-semibold py-2 px-4 rounded w-36"
-                @click="applyDate"
+                @click="applyDate(), toggleCalendar()"
               >
                 Apply
               </button>
